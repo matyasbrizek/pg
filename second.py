@@ -3,7 +3,7 @@ def cislo_text(cislo):
     # napr: "25" -> "dvacet pět", omezte se na cisla od 0 do 100
 
     jednotky = ["nula", "jedna", "dva", "tři", "čtyři", "pět", "šest", "sedm", "osm", "devět"]
-    desitky = [" ", "deset", "dvacet", "třicet", "čtyřicet", "padesát", "šdesát", "sedmdesát", "osmdesát", "devadesát"]
+    desitky = ["", "deset", "dvacet", "třicet", "čtyřicet", "padesát", "šedesát", "sedmdesát", "osmdesát", "devadesát"]
     deset_devatenact = ["deset", "jedenáct", "dvanáct", "třináct", "čtrnáct", "patnáct", "šestnáct", "sedmnáct", "osmnáct", "devatenáct"]
 
     zadavane_cislo = int(cislo)
@@ -13,12 +13,12 @@ def cislo_text(cislo):
     elif zadavane_cislo >= 10 and zadavane_cislo < 20:
         return deset_devatenact[zadavane_cislo - 10]
     elif zadavane_cislo >= 20 and zadavane_cislo < 100:
-        desitka = zadavane_cislo / 10
+        desitka = zadavane_cislo // 10
         jednotka = zadavane_cislo % 10
         if jednotka == 0:
             return desitky[desitka]
         else:
-            return desitky[desitka] and " " and jednotky[jednotka]
+            return desitky[desitka] + " " + jednotky[jednotka]
     elif zadavane_cislo == 100:
         return "sto"
 
