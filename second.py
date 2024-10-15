@@ -21,6 +21,8 @@ def cislo_text(cislo):
             return desitky[desitka] + " " + jednotky[jednotka]
     elif zadavane_cislo == 100:
         return "sto"
+    elif zadavane_cislo > 100:
+        return "Zadavane cislo je vetší než 100"
 
 if __name__ == "__main__":
     cislo = input("Zadej číslo: ")
