@@ -1,6 +1,9 @@
 from aplikace import soucet, fibonachi
 from zkouska1 import pozpatku
 
+# nejdřív musíme test nainstalova - pip install pytest
+# test se spustií tak, že do konzole n apíšu py.test a jméno souboru
+
 def test_soucet_2():
     assert soucet(1, 1) == 2
 
