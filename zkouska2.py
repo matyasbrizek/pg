@@ -30,9 +30,9 @@ def fetch_and_save_data():
         for item in data:
             item['userName'] = user_names.get(item['userId'], "Unknown User")
 
-        # Zapsání a uložení do souboru, indent přidává odszení pro čitelnost dat
+        # Zapsání a uložení do souboru
         with open("data.json", "w") as file:
-            json.dump(data, file, indent=4)
+            json.dump(data, file)
 
         return True
     except Exception as e:
