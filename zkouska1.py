@@ -1,32 +1,22 @@
-import sys
+# Příklad 1: Práce s podmínkami a cykly
+# Zadání:
+# Napište funkci `process_numbers`, která přijme seznam celých čísel. 
+# Funkce vrátí nový seznam, který obsahuje pouze čísla větší než 5, vynásobená 2.
+# Pokud seznam obsahuje číslo 10, ukončete zpracování seznamu a vraťte dosud vytvořený seznam.
 
-def pozpatku(text):
-    text_pozpatku = ""
-    for pismeno in reversed(text):
-        text_pozpatku +=pismeno
-    return text_pozpatku
+def process_numbers(numbers):
+     
+    result = []
+    for number in numbers:
+        if number == 10:
+            break
+        if number > 5:
+            result.append(number * 2)
+    return result
 
-def pozpatku2(text):
-    text_pozpatku = ""
-    i = len(text) - 1
-    while i >= 0:
-        pismeno = text[i]
-        text_pozpatku += pismeno
-        i -= 1
-    return text_pozpatku
-
-
-
-if __name__ == "__main__":
-    pozpatku("ahoj")
-    try:
-        soubor = sys.argv[1]
-        with open(soubor, "r") as fp:
-            obsah = fp.read()
-            print(obsah)
-            obracene = pozpatku(obsah)
-            print(obracene)
-    except IndexError:
-        print("Zadejte název souboru")
-    except FileNotFoundError:
-        print("Soubor neexistuje")
+# Pytest testy pro Příklad 1
+def test_process_numbers():
+    assert process_numbers([1, 6, 3, 10, 8]) == [12]
+    assert process_numbers([7, 8, 10, 12]) == [14, 16]
+    assert process_numbers([1, 2, 3, 4]) == []
+    assert process_numbers([5, 6, 7, 15]) == [12, 14, 30]
