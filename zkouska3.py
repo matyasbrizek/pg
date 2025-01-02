@@ -15,12 +15,12 @@ class Shape(ABC):
 
 class Rectangle(Shape):
     #__init__ je konstruktor pro nastavení počátečních hodnot atributů
+    #self odkazuje na konrétní instanci třídy
     def __init__(self, width, height):
         self.width = width
         self.height = height
 
     #děděná metoda z Shape, ale definovaná pro konkrétní tvar
-    #odkazuje na konrétní instanci třídy
     def area(self):
         return self.width * self.height
 
