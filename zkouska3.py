@@ -7,12 +7,30 @@
 
 from abc import ABC, abstractmethod
 
+#abstraktní třída, všechny její podtřídy musí dědit metodu area
 class Shape(ABC):
     @abstractmethod
     def area(self):
         pass
 
-# ZDE DOPLŇTE VLASTNÍ KÓD
+class Rectangle(Shape):
+    #__init__ je konstruktor pro nastavení počátečních hodnot atributů
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    #děděná metoda z Shape, ale definovaná pro konkrétní tvar
+    #odkazuje na konrétní instanci třídy
+    def area(self):
+        return self.width * self.height
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        import math
+        return math.pi * (self.radius ** 2)
 
 from unittest.mock import patch, MagicMock, mock_open
 

@@ -1,11 +1,3 @@
-# Příklad 2: Práce s externími knihovnami a soubory
-# Zadání:
-# Napište funkci `fetch_and_save_data`, která:
-# 1. Načte data z URL (https://jsonplaceholder.typicode.com/posts).
-# 2. Do staženého json souboru přidá klíč `userName` s hodnotou jména uživatele podle klíče `userId` z URL (např. 1 -> "Leanne Graham").
-# 3. Data uloží do souboru `data.json` ve formátu JSON.
-# Použijte knihovny `requests` a `json`.
-
 import requests
 import json
 
@@ -24,8 +16,28 @@ user_names = {
 }
 
 def fetch_and_save_data():
-    # ZDE NAPIŠTE VÁŠ KÓD
-    pass
+
+    try:
+        #kontrola zda jsme se správně připojili na určitou stránku a jde s ní pracovat
+        response = requests.get(url)
+        if response.status_code != 200:
+            return False
+
+        #usnadnění práce s daty
+        data = response.json()
+
+        # Přidání klíče userName, pokud není userID ve slovníku, vypíše Unknown User
+        for item in data:
+            item['userName'] = user_names.get(item['userId'], "Unknown User")
+
+        # Zapsání a uložení do souboru, indent přidává odszení pro čitelnost dat
+        with open("data.json", "w") as file:
+            json.dump(data, file, indent=4)
+
+        return True
+    except Exception as e:
+        print(f"Došlo k chybě: {e}")
+        return False
 
 # Pytest testy pro Příklad 2
 from unittest.mock import patch, MagicMock, mock_open

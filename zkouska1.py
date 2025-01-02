@@ -5,8 +5,10 @@
 # Pokud seznam obsahuje číslo 10, ukončete zpracování seznamu a vraťte dosud vytvořený seznam.
 
 def process_numbers(numbers):
-     
+     # vytvoření nového seznamu
     result = []
+
+    #iterace přes cyklus for
     for number in numbers:
         if number == 10:
             break
